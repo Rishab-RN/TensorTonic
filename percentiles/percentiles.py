@@ -4,15 +4,21 @@ def percentiles(x, q):
     """
     Compute percentiles using linear interpolation.
     """
-    x = np.sort(np.asarray(x))
-    q = np.asarray(q)
+    
+    x = np.asarray(x, dtype = float)
+    q = np.asarray(q, dtype = float)
 
-    n = len(x)
-    pos = q / 100 * (n - 1)
+    return np.percentile(x, q, method = 'linear')
+    
+    # x = np.sort(np.asarray(x))
+    # q = np.asarray(q)
 
-    lower = np.floor(pos).astype(int)
-    upper = np.ceil(pos).astype(int)
+    # n = len(x)
+    # pos = q / 100 * (n - 1)
 
-    res = x[lower] + (pos - lower) * (x[upper] - x[lower])
+    # lower = np.floor(pos).astype(int)
+    # upper = np.ceil(pos).astype(int)
 
-    return res
+    # res = x[lower] + (pos - lower) * (x[upper] - x[lower])
+
+    # return res
